@@ -1,11 +1,13 @@
 package ua.regin.pictures.ui.details;
 
+import android.app.DownloadManager;
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.ActionBar;
-import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 
@@ -52,6 +54,7 @@ public class DetailsActivity extends BaseActivity {
         toolbar.setNavigationOnClickListener(ignored -> onBackPressed());
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp);
             actionBar.setTitle(post.getTitle());
         }
         Picasso.with(getContext()).load(post.getImageUrl()).fit().centerInside().into(imageView, new Callback() {
@@ -75,5 +78,23 @@ public class DetailsActivity extends BaseActivity {
         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Amazing image");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
         startActivity(Intent.createChooser(sharingIntent, "Share via"));
+    }
+
+    @OptionsItem(R.id.action_download)
+    protected void downloadClicked() {
+        DownloadManager mgr = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+
+        Uri downloadUri = Uri.parse(post.getImageUrl());
+        DownloadManager.Request request = new DownloadManager.Request(
+                downloadUri);
+
+        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI
+                | DownloadManager.Request.NETWORK_MOBILE)
+                .setAllowedOverRoaming(false).setTitle("Downloading image")
+                .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                .setDestinationInExternalPublicDir("/Images", post.getTitle() + ".jpg");
+
+        mgr.enqueue(request);
+
     }
 }

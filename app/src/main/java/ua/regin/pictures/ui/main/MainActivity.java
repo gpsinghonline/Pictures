@@ -84,7 +84,7 @@ public class MainActivity extends BaseActivity {
         if (actionBar != null) {
             actionBar.setTitle(title);
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
         }
     }
 }
