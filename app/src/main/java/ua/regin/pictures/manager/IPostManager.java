@@ -11,4 +11,6 @@ public interface IPostManager {
 
     Observable<List<Post>> loadPostsBySlug(String slug);
 
+    Observable<List<Post>> search(String search);
+
 }

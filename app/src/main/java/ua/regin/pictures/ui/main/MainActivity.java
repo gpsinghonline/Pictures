@@ -12,13 +12,17 @@ import android.support.v7.widget.Toolbar;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.OptionsItem;
+import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 
 import ua.regin.pictures.R;
 import ua.regin.pictures.ui.BaseActivity;
 import ua.regin.pictures.ui.picture.PictureListFragment_;
+import ua.regin.pictures.ui.search.SearchActivity_;
 
 @EActivity(R.layout.activity_main)
+@OptionsMenu(R.menu.menu_main)
 public class MainActivity extends BaseActivity {
 
     @ViewById
@@ -76,6 +80,11 @@ public class MainActivity extends BaseActivity {
                 .commit();
     }
 
+    @OptionsItem(R.id.action_search)
+    protected void searchClicked() {
+        SearchActivity_.intent(this).start();
+    }
+
     public void setToolbar(Toolbar toolbar, String title) {
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -85,6 +94,15 @@ public class MainActivity extends BaseActivity {
             actionBar.setTitle(title);
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
+            super.onBackPressed();
+        } else {
+            drawerLayout.openDrawer(GravityCompat.START);
         }
     }
 }

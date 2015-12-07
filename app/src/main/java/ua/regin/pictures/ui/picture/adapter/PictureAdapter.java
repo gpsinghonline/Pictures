@@ -20,10 +20,14 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.ViewHold
     private List<Post> postList;
     private OnItemClickListener onItemClickListener;
 
-    public PictureAdapter(Context context, List<Post> postList, OnItemClickListener onItemClickListener) {
+    public PictureAdapter(Context context, OnItemClickListener onItemClickListener) {
         this.context = context;
-        this.postList = postList;
         this.onItemClickListener = onItemClickListener;
+    }
+
+    public void setPostList(List<Post> postList) {
+        this.postList = postList;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -42,7 +46,11 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return postList.size();
+        int size = 0;
+        if (postList != null) {
+            size = postList.size();
+        }
+        return size;
     }
 
     @Override

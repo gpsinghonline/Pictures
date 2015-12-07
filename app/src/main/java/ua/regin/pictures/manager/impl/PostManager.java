@@ -42,8 +42,10 @@ public class PostManager implements IPostManager {
                 .map(postList -> Stream.of(postList).map(post -> {
                     Document document = Jsoup.parse(post.getContent());
                     Element image = document.select("img").first();
-                    String url = image.absUrl("src");
-                    post.setImageUrl(url);
+                    if (image != null) {
+                        String url = image.absUrl("src");
+                        post.setImageUrl(url);
+                    }
                     return post;
                 }).collect(Collectors.toList()))
                 .subscribeOn(Schedulers.io())
@@ -57,8 +59,27 @@ public class PostManager implements IPostManager {
                 .map(postList -> Stream.of(postList).map(post -> {
                     Document document = Jsoup.parse(post.getContent());
                     Element image = document.select("img").first();
-                    String url = image.absUrl("src");
-                    post.setImageUrl(url);
+                    if (image != null) {
+                        String url = image.absUrl("src");
+                        post.setImageUrl(url);
+                    }
+                    return post;
+                }).collect(Collectors.toList()))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<List<Post>> search(String search) {
+        return api.search(search)
+                .map(PostInfo::getPosts)
+                .map(postList -> Stream.of(postList).map(post -> {
+                    Document document = Jsoup.parse(post.getContent());
+                    Element image = document.select("img").first();
+                    if (image != null) {
+                        String url = image.absUrl("src");
+                        post.setImageUrl(url);
+                    }
                     return post;
                 }).collect(Collectors.toList()))
                 .subscribeOn(Schedulers.io())
@@ -72,5 +93,8 @@ public class PostManager implements IPostManager {
 
         @GET("/get_category_posts/")
         Observable<PostInfo> loadPostsBySlug(@Query("slug") String slug);
+
+        @GET("/get_search_results/")
+        Observable<PostInfo> search(@Query("search") String search);
     }
 }

@@ -1,20 +1,22 @@
-package ua.regin.pictures.ui.picture;
+package ua.regin.pictures.ui.search;
 
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 
+import org.androidannotations.annotations.AfterTextChange;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EFragment;
-import org.androidannotations.annotations.FragmentArg;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.List;
 
+import rx.Subscription;
 import ua.regin.pictures.R;
 import ua.regin.pictures.api.entity.Post;
 import ua.regin.pictures.manager.IPostManager;
@@ -22,16 +24,12 @@ import ua.regin.pictures.manager.impl.PostManager;
 import ua.regin.pictures.ui.BaseFragment;
 import ua.regin.pictures.ui.details.DetailsActivity;
 import ua.regin.pictures.ui.details.DetailsActivity_;
-import ua.regin.pictures.ui.main.MainActivity;
 import ua.regin.pictures.ui.picture.adapter.PictureAdapter;
 
-@EFragment(R.layout.fragment_picture_list)
-public class PictureListFragment extends BaseFragment implements PictureAdapter.OnItemClickListener {
+@EFragment(R.layout.fragment_search)
+public class SearchFragment extends BaseFragment implements PictureAdapter.OnItemClickListener {
 
     private PictureAdapter adapter;
-
-    @FragmentArg
-    protected String slug;
 
     @Bean(PostManager.class)
     protected IPostManager postManager;
@@ -45,23 +43,18 @@ public class PictureListFragment extends BaseFragment implements PictureAdapter.
     @ViewById
     protected ProgressBar progressBar;
 
+    @ViewById
+    protected EditText searchView;
+
     @AfterViews
     protected void afterViews() {
-        MainActivity activity = (MainActivity) getActivity();
+        SearchActivity activity = (SearchActivity) getActivity();
+        activity.setToolbar(toolbar, "Search");
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
         recyclerView.setLayoutManager(layoutManager);
         adapter = new PictureAdapter(getContext(), this);
         recyclerView.setAdapter(adapter);
 
-        String title;
-        if (slug != null) {
-            title = slug;
-            postManager.loadPostsBySlug(slug).compose(bindToLifecycle()).subscribe(this::updateData, this::handleError);
-        } else {
-            title = getString(R.string.drawer_recent);
-            postManager.loadRecentPosts().compose(bindToLifecycle()).subscribe(this::updateData, this::handleError);
-        }
-        activity.setToolbar(toolbar, title);
     }
 
     @Override
@@ -75,6 +68,22 @@ public class PictureListFragment extends BaseFragment implements PictureAdapter.
         recyclerView.setVisibility(View.VISIBLE);
         adapter.setPostList(postList);
     }
+
+    private Subscription subscription;
+
+    @AfterTextChange(R.id.searchView)
+    protected void afterSearchView() {
+        if (subscription != null && !subscription.isUnsubscribed()) {
+            subscription.unsubscribe();
+        }
+        String search = searchView.getText().toString();
+        if (!search.isEmpty()) {
+            progressBar.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.GONE);
+            subscription = postManager.search(searchView.getText().toString()).subscribe(this::updateData, this::handleError);
+        }
+    }
+
 
     @Override
     public void onItemClick(View view, Post post) {
