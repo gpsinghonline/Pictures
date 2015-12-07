@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_recent"
+            android:checked="true"
+            android:title="@string/drawer_recent" />
+        <item
+            android:id="@+id/drawer_alone"
+            android:title="@string/drawer_alone" />
+        <item
+            android:id="@+id/drawer_best_friends"
+            android:title="@string/drawer_best_friends" />
+        <item
+            android:id="@+id/drawer_boys_and_girls"
+            android:title="@string/drawer_boys_and_girls" />
+        <item
+            android:id="@+id/drawer_chocolate_day"
+            android:title="@string/drawer_chocolate_day" />
+        <item
+            android:id="@+id/drawer_hi"
+            android:title="@string/drawer_hi" />
+    </group>
+</menu>

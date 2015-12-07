@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Pictures</string>
+
+    <string name="title_recent">Recent pictures</string>
+
+    <!-- Drawer menu -->
+    <string name="drawer_recent">Recent</string>
+    <string name="drawer_alone">Alone</string>
+    <string name="drawer_best_friends">Best Friends</string>
+    <string name="drawer_boys_and_girls">Boys &amp; Girls</string>
+    <string name="drawer_chocolate_day">Chocolate Day</string>
+    <string name="drawer_hi">Hi</string>
+</resources>
