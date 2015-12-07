@@ -1,12 +1,14 @@
 package ua.regin.pictures.manager;
 
+import java.util.List;
+
 import rx.Observable;
-import ua.regin.pictures.api.entity.PostInfo;
+import ua.regin.pictures.api.entity.Post;
 
 public interface IPostManager {
 
-    Observable<PostInfo> loadRecentPosts();
+    Observable<List<Post>> loadRecentPosts();
 
-    Observable<PostInfo> loadPostsBySlug(String slug);
+    Observable<List<Post>> loadPostsBySlug(String slug);
 
 }

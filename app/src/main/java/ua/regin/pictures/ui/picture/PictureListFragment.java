@@ -1,5 +1,6 @@
 package ua.regin.pictures.ui.picture;
 
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -12,16 +13,20 @@ import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.FragmentArg;
 import org.androidannotations.annotations.ViewById;
 
+import java.util.List;
+
 import ua.regin.pictures.R;
-import ua.regin.pictures.api.entity.PostInfo;
+import ua.regin.pictures.api.entity.Post;
 import ua.regin.pictures.manager.IPostManager;
 import ua.regin.pictures.manager.impl.PostManager;
 import ua.regin.pictures.ui.BaseFragment;
+import ua.regin.pictures.ui.details.DetailsActivity;
+import ua.regin.pictures.ui.details.DetailsActivity_;
 import ua.regin.pictures.ui.main.MainActivity;
 import ua.regin.pictures.ui.picture.adapter.PictureAdapter;
 
 @EFragment(R.layout.fragment_picture_list)
-public class PictureListFragment extends BaseFragment {
+public class PictureListFragment extends BaseFragment implements PictureAdapter.OnItemClickListener {
 
     @FragmentArg
     protected String slug;
@@ -47,18 +52,32 @@ public class PictureListFragment extends BaseFragment {
         String title;
         if (slug != null) {
             title = slug;
-            postManager.loadPostsBySlug(slug).compose(bindToLifecycle()).subscribe(this::updateData);
+            postManager.loadPostsBySlug(slug).compose(bindToLifecycle()).subscribe(this::updateData, this::handleError);
         } else {
             title = getString(R.string.drawer_recent);
-            postManager.loadRecentPosts().compose(bindToLifecycle()).subscribe(this::updateData);
+            postManager.loadRecentPosts().compose(bindToLifecycle()).subscribe(this::updateData, this::handleError);
         }
         activity.setToolbar(toolbar, title);
     }
 
-    private void updateData(PostInfo postInfo) {
+    @Override
+    public void handleError(Throwable e) {
+        progressBar.setVisibility(View.GONE);
+        super.handleError(e);
+    }
+
+    private void updateData(List<Post> postList) {
         progressBar.setVisibility(View.GONE);
         recyclerView.setVisibility(View.VISIBLE);
-        PictureAdapter adapter = new PictureAdapter(getContext(), postInfo.getPosts());
+        PictureAdapter adapter = new PictureAdapter(getContext(), postList, this);
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onItemClick(View view, Post post) {
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),
+                view, DetailsActivity.IMAGE_TRANSACTION_NAME);
+
+        DetailsActivity_.intent(getContext()).post(post).withOptions(options.toBundle()).start();
     }
 }

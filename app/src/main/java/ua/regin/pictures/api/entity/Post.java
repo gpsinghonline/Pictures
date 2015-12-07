@@ -9,6 +9,7 @@ public class Post implements Serializable {
     private String url;
     private String title;
     private String content;
+    private String imageUrl;
 
     public int getId() {
         return id;
@@ -28,5 +29,13 @@ public class Post implements Serializable {
 
     public String getContent() {
         return content;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
