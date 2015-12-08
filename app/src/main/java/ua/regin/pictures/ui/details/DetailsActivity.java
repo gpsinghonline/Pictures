@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.ActionBar;
@@ -15,21 +16,31 @@ import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 
+import java.io.IOException;
+
+import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 import ua.regin.pictures.R;
 import ua.regin.pictures.api.entity.Post;
 import ua.regin.pictures.ui.BaseActivity;
+import ua.regin.pictures.utils.ProgressDialogHelper;
 
 @EActivity(R.layout.activity_details)
 @OptionsMenu(R.menu.menu_details)
 public class DetailsActivity extends BaseActivity {
 
     public static final String IMAGE_TRANSACTION_NAME = "image:transaction";
+
+    @Bean
+    protected ProgressDialogHelper progressDialogHelper;
 
     @Extra
     protected Post post;
@@ -72,12 +83,32 @@ public class DetailsActivity extends BaseActivity {
 
     @OptionsItem(R.id.action_share)
     protected void shareClicked() {
-        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-        sharingIntent.setType("text/plain");
-        String shareBody = "Amazing image: " + post.getUrl();
-        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Amazing image");
-        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-        startActivity(Intent.createChooser(sharingIntent, "Share via"));
+        progressDialogHelper.showProgressDialog();
+        Observable.just(null)
+                .subscribeOn(Schedulers.io())
+                .map(v -> {
+                    try {
+                        return Picasso.with(this).load(post.getImageUrl()).get();
+                    } catch (IOException e) {
+                        throw new RuntimeException("Unknown image");
+                    }
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnNext(bitmap -> {
+                    String bitmapUri = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "title", null);
+                    Uri bmpUri = Uri.parse(bitmapUri);
+                    final Intent emailIntent1 = new Intent(android.content.Intent.ACTION_SEND);
+                    emailIntent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    emailIntent1.putExtra(Intent.EXTRA_STREAM, bmpUri);
+                    emailIntent1.setType("image/png");
+                    startActivity(Intent.createChooser(emailIntent1, "Share via"));
+                }).subscribe(v -> progressDialogHelper.dismissDialog(), this::handleError);
+    }
+
+    @Override
+    public void handleError(Throwable e) {
+        super.handleError(e);
+        progressDialogHelper.dismissDialog();
     }
 
     @OptionsItem(R.id.action_download)
@@ -95,6 +126,5 @@ public class DetailsActivity extends BaseActivity {
                 .setDestinationInExternalPublicDir("/Images", post.getTitle() + ".jpg");
 
         mgr.enqueue(request);
-
     }
 }
