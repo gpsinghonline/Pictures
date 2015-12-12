@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ua.regin.pictures.ui.picture.components.SquareLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ua.regin.vipjanta.ui.picture.components.SquareLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,4 +20,4 @@
         android:text="TEST TEST TEST"
         android:textColor="@android:color/black"
         android:id="@+id/title" />
-</ua.regin.pictures.ui.picture.components.SquareLayout>
+</ua.regin.vipjanta.ui.picture.components.SquareLayout>

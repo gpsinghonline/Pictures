@@ -18,7 +18,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "ua.regin.pictures"
+        applicationId "ua.regin.vipjanta"
         minSdkVersion 14
         targetSdkVersion 22
         versionCode 1
