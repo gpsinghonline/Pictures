@@ -25,6 +25,8 @@ import ua.regin.pictures.manager.IPostManager;
 @EBean(scope = EBean.Scope.Singleton)
 public class PostManager implements IPostManager {
 
+    private static final int COUNT = -1;
+
     @Bean
     protected ApiManager apiManager;
 
@@ -54,7 +56,7 @@ public class PostManager implements IPostManager {
 
     @Override
     public Observable<List<Post>> loadPostsBySlug(String slug) {
-        return api.loadPostsBySlug(slug)
+        return api.loadPostsBySlug(slug, COUNT)
                 .map(PostInfo::getPosts)
                 .map(postList -> Stream.of(postList).map(post -> {
                     Document document = Jsoup.parse(post.getContent());
@@ -71,7 +73,7 @@ public class PostManager implements IPostManager {
 
     @Override
     public Observable<List<Post>> search(String search) {
-        return api.search(search)
+        return api.search(search, COUNT)
                 .map(PostInfo::getPosts)
                 .map(postList -> Stream.of(postList).map(post -> {
                     Document document = Jsoup.parse(post.getContent());
@@ -92,9 +94,9 @@ public class PostManager implements IPostManager {
         Observable<PostInfo> loadRecentPosts();
 
         @GET("/get_category_posts/")
-        Observable<PostInfo> loadPostsBySlug(@Query("slug") String slug);
+        Observable<PostInfo> loadPostsBySlug(@Query("slug") String slug, @Query("&count") int count);
 
         @GET("/get_search_results/")
-        Observable<PostInfo> search(@Query("search") String search);
+        Observable<PostInfo> search(@Query("search") String search, @Query("&count") int count);
     }
 }

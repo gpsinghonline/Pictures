@@ -12,7 +12,7 @@ import retrofit.converter.GsonConverter;
 @EBean(scope = EBean.Scope.Singleton)
 public class ApiManager {
 
-    private static final String BASE_URL = "http://www.unlimitedfreeonline.com/blog/api";
+    private static final String BASE_URL = "http://www.vipjanta.net/api";
 
     public static final String DATE_FORMAT__NORMAL_WITH_YEAR = "yyyy-MM-dd HH:mm:ss";
 

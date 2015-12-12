@@ -1,23 +1,104 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/drawer_recent"
+            android:id="@+id/drawer_vip"
             android:checked="true"
-            android:title="@string/drawer_recent" />
+            android:title="@string/drawer_vip" />
         <item
-            android:id="@+id/drawer_alone"
-            android:title="@string/drawer_alone" />
+            android:id="@+id/drawer_amazing"
+            android:title="@string/drawer_amazing" />
         <item
-            android:id="@+id/drawer_best_friends"
-            android:title="@string/drawer_best_friends" />
+            android:id="@+id/drawer_Birthday_Graphics"
+            android:title="@string/drawer_Birthday_Graphics" />
         <item
-            android:id="@+id/drawer_boys_and_girls"
-            android:title="@string/drawer_boys_and_girls" />
+            android:id="@+id/drawer_Best_of_Luck"
+            android:title="@string/drawer_Best_of_Luck" />
         <item
-            android:id="@+id/drawer_chocolate_day"
-            android:title="@string/drawer_chocolate_day" />
+            android:id="@+id/drawer_Call_Me"
+            android:title="@string/drawer_Call_Me" />
         <item
-            android:id="@+id/drawer_hi"
-            android:title="@string/drawer_hi" />
+            android:id="@+id/drawer_Desi_graphics"
+            android:title="@string/drawer_Desi_graphics" />
+        <item
+            android:id="@+id/drawer_Facebook_graphics"
+            android:title="@string/drawer_Facebook_graphics" />
+        <item
+            android:id="@+id/drawer_Flowers"
+            android:title="@string/drawer_Flowers" />
+        <item
+            android:id="@+id/drawer_Funny_graphics"
+            android:title="@string/drawer_Funny_graphics" />
+        <item
+            android:id="@+id/drawer_Friendship_Day"
+            android:title="@string/drawer_Friendship_Day" />
+        <item
+            android:id="@+id/drawer_Golden_Temple"
+            android:title="@string/drawer_Golden_Temple" />
+        <item
+            android:id="@+id/drawer_Good_morning"
+            android:title="@string/drawer_Good_morning" />
+        <item
+            android:id="@+id/drawer_Good_night"
+            android:title="@string/drawer_Good_night" />
+        <item
+            android:id="@+id/drawer_Hello"
+            android:title="@string/drawer_Hello" />
+        <item
+            android:id="@+id/drawer_Heart_Graphics"
+            android:title="@string/drawer_Heart_Graphics" />
+        <item
+            android:id="@+id/drawer_Hinduism"
+            android:title="@string/drawer_Hinduism" />
+        <item
+            android:id="@+id/drawer_Love_you"
+            android:title="@string/drawer_Love_you" />
+        <item
+            android:id="@+id/drawer_Love_graphics"
+            android:title="@string/drawer_Love_graphics" />
+        <item
+            android:id="@+id/drawer_Miss_you"
+            android:title="@string/drawer_Miss_you" />
+        <item
+            android:id="@+id/drawer_Old_Punjab"
+            android:title="@string/drawer_Old_Punjab" />
+        <item
+            android:id="@+id/drawer_Punjabi_Culture"
+            android:title="@string/drawer_Punjabi_Culture" />
+        <item
+            android:id="@+id/drawer_Punjabi_graphics"
+            android:title="@string/drawer_Punjabi_graphics" />
+        <item
+            android:id="@+id/drawer_Punjabi_couple"
+            android:title="@string/drawer_Punjabi_couple" />
+        <item
+            android:id="@+id/drawer_Sad_Graphics"
+            android:title="@string/drawer_Sad_Graphics" />
+        <item
+            android:id="@+id/drawer_Singh_soorme"
+            android:title="@string/drawer_Singh_soorme" />
+        <item
+            android:id="@+id/drawer_Sat_sri_akal"
+            android:title="@string/drawer_Sat_sri_akal" />
+        <item
+            android:id="@+id/drawer_Sikh_Guru"
+            android:title="@string/drawer_Sikh_Guru" />
+        <item
+            android:id="@+id/drawer_Sikhism"
+            android:title="@string/drawer_Sikhism" />
+        <item
+            android:id="@+id/drawer_Sorry"
+            android:title="@string/drawer_Sorry" />
+        <item
+            android:id="@+id/drawer_Turban_special"
+            android:title="@string/drawer_Turban_special" />
+        <item
+            android:id="@+id/drawer_Thank_You"
+            android:title="@string/drawer_Thank_You" />
+        <item
+            android:id="@+id/drawer_Valentines_Day"
+            android:title="@string/drawer_Valentines_Day" />
+        <item
+            android:id="@+id/drawer_Whatsapp_sepecial"
+            android:title="@string/drawer_Whatsapp_sepecial" />
     </group>
 </menu>

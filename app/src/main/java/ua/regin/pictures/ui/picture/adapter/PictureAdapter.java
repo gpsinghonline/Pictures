@@ -14,14 +14,19 @@ import java.util.List;
 import ua.regin.pictures.R;
 import ua.regin.pictures.api.entity.Post;
 
-public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.ViewHolder> {
+public class PictureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
+    private static final int TYPE_HEADER = 0;
+    private static final int TYPE_ITEM = 1;
 
     private final Context context;
     private List<Post> postList;
     private OnItemClickListener onItemClickListener;
+    private final boolean withLogo;
 
-    public PictureAdapter(Context context, OnItemClickListener onItemClickListener) {
+    public PictureAdapter(Context context, boolean withLogo, OnItemClickListener onItemClickListener) {
         this.context = context;
+        this.withLogo = withLogo;
         this.onItemClickListener = onItemClickListener;
     }
 
@@ -31,24 +36,32 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.ViewHold
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_picture, parent, false);
-        return new ViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if (viewType == TYPE_HEADER && withLogo) {
+            return new ViewHolderHeader(LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.item_picture_header, parent, false));
+        } else {
+            return new ViewHolder(LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.item_picture, parent, false));
+
+        }
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        Post post = postList.get(position);
-        Picasso.with(context).load(post.getImageUrl()).fit().centerCrop().into(holder.imageView);
-        holder.setOnClickListener(v -> onItemClickListener.onItemClick(holder.imageView, post));
+    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
+        if (viewHolder instanceof ViewHolder) {
+            ViewHolder holder = (ViewHolder) viewHolder;
+            Post post = postList.get(position);
+            Picasso.with(context).load(post.getImageUrl()).fit().centerCrop().into(holder.imageView);
+            holder.setOnClickListener(v -> onItemClickListener.onItemClick(holder.imageView, post));
+        }
     }
 
     @Override
     public int getItemCount() {
         int size = 0;
         if (postList != null) {
-            size = postList.size();
+            size = postList.size() + (withLogo ? +1 : +0);
         }
         return size;
     }
@@ -56,6 +69,18 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.ViewHold
     @Override
     public long getItemId(int position) {
         return postList.get(position).getId();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (isPositionHeader(position))
+            return TYPE_HEADER;
+
+        return TYPE_ITEM;
+    }
+
+    private boolean isPositionHeader(int position) {
+        return position == 0;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -81,5 +106,12 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.ViewHold
 
     public interface OnItemClickListener {
         void onItemClick(View view, Post post);
+    }
+
+    class ViewHolderHeader extends RecyclerView.ViewHolder {
+
+        public ViewHolderHeader(View itemView) {
+            super(itemView);
+        }
     }
 }

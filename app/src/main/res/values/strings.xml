@@ -1,13 +1,41 @@
 <resources>
-    <string name="app_name">Pictures</string>
+    <string name="app_name">Vip Janta</string>
 
     <string name="title_recent">Recent pictures</string>
 
     <!-- Drawer menu -->
-    <string name="drawer_recent">Recent</string>
-    <string name="drawer_alone">Alone</string>
-    <string name="drawer_best_friends">Best Friends</string>
-    <string name="drawer_boys_and_girls">Boys &amp; Girls</string>
-    <string name="drawer_chocolate_day">Chocolate Day</string>
-    <string name="drawer_hi">Hi</string>
+    <string name="drawer_vip">Vip</string>
+    <string name="drawer_amazing">Amazing</string>
+    <string name="drawer_Birthday_Graphics">Birthday Graphics</string>
+    <string name="drawer_Best_of_Luck">Best of Luck</string>
+    <string name="drawer_Call_Me">Call Me</string>
+    <string name="drawer_Desi_graphics">Desi graphics</string>
+    <string name="drawer_Facebook_graphics">Facebook graphics</string>
+    <string name="drawer_Flowers">Flowers</string>
+    <string name="drawer_Funny_graphics">Funny graphics</string>
+    <string name="drawer_Friendship_Day">Friendship Day</string>
+    <string name="drawer_Golden_Temple">Golden Temple</string>
+    <string name="drawer_Good_morning">Good morning</string>
+    <string name="drawer_Good_night">Good night</string>
+    <string name="drawer_Hello">Hello</string>
+    <string name="drawer_Heart_Graphics">Heart Graphics</string>
+    <string name="drawer_Hinduism">Hinduism</string>
+    <string name="drawer_Love_you">Love you</string>
+    <string name="drawer_Love_graphics">Love graphics</string>
+    <string name="drawer_Miss_you">Miss you</string>
+    <string name="drawer_Old_Punjab">Old Punjab</string>
+    <string name="drawer_Punjabi_Culture">Punjabi Culture</string>
+    <string name="drawer_Punjabi_graphics">Punjabi graphics</string>
+    <string name="drawer_Punjabi_couple">Punjabi couple</string>
+    <string name="drawer_Sad_Graphics">Sad Graphics</string>
+    <string name="drawer_Singh_soorme">Singh soorme</string>
+    <string name="drawer_Sat_sri_akal">Sat sri akal</string>
+    <string name="drawer_Sikh_Guru">Sikh Guru</string>
+    <string name="drawer_Sikhism">Sikhism</string>
+    <string name="drawer_Sorry">Sorry</string>
+    <string name="drawer_Turban_special">Turban special</string>
+    <string name="drawer_Thank_You">Thank You</string>
+    <string name="drawer_Valentines_Day">Valentines Day</string>
+    <string name="drawer_Whatsapp_sepecial">Whatsapp sepecial</string>
+
 </resources>

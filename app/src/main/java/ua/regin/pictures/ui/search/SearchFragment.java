@@ -52,7 +52,7 @@ public class SearchFragment extends BaseFragment implements PictureAdapter.OnIte
         activity.setToolbar(toolbar, "Search");
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new PictureAdapter(getContext(), this);
+        adapter = new PictureAdapter(getContext(), false, this);
         recyclerView.setAdapter(adapter);
 
     }

@@ -33,6 +33,9 @@ public class PictureListFragment extends BaseFragment implements PictureAdapter.
     @FragmentArg
     protected String slug;
 
+    @FragmentArg
+    protected boolean withLogo;
+
     @Bean(PostManager.class)
     protected IPostManager postManager;
 
@@ -48,20 +51,26 @@ public class PictureListFragment extends BaseFragment implements PictureAdapter.
     @AfterViews
     protected void afterViews() {
         MainActivity activity = (MainActivity) getActivity();
+        activity.setToolbar(toolbar, slug);
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
+        if (withLogo) {
+            layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                @Override
+                public int getSpanSize(int position) {
+                    if (position == 0) {
+                        return 2;
+                    } else {
+                        return 1;
+                    }
+                }
+            });
+        }
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new PictureAdapter(getContext(), this);
+        adapter = new PictureAdapter(getContext(), withLogo, this);
         recyclerView.setAdapter(adapter);
 
-        String title;
-        if (slug != null) {
-            title = slug;
-            postManager.loadPostsBySlug(slug).compose(bindToLifecycle()).subscribe(this::updateData, this::handleError);
-        } else {
-            title = getString(R.string.drawer_recent);
-            postManager.loadRecentPosts().compose(bindToLifecycle()).subscribe(this::updateData, this::handleError);
-        }
-        activity.setToolbar(toolbar, title);
+
+        postManager.loadPostsBySlug(slug).compose(bindToLifecycle()).subscribe(this::updateData, this::handleError);
     }
 
     @Override
