@@ -67,4 +67,7 @@ dependencies {
 
     //Smooth progress bar
     compile 'com.github.castorflex.smoothprogressbar:library-circular:1.2.0'
+
+    //OrmLite
+    compile 'com.j256.ormlite:ormlite-android:4.48'
 }

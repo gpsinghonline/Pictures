@@ -1,6 +1,7 @@
 package ua.regin.pictures.ui.main;
 
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -9,8 +10,10 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
@@ -18,6 +21,7 @@ import org.androidannotations.annotations.ViewById;
 
 import ua.regin.pictures.R;
 import ua.regin.pictures.ui.BaseActivity;
+import ua.regin.pictures.ui.downloads.DownloadsActivity_;
 import ua.regin.pictures.ui.picture.PictureListFragment_;
 import ua.regin.pictures.ui.search.SearchActivity_;
 
@@ -150,6 +154,30 @@ public class MainActivity extends BaseActivity {
             drawerLayout.closeDrawers();
             return true;
         });
+    }
+
+    @Click(R.id.home_button)
+    protected void homeClicked() {
+        switchFragment(PictureListFragment_.builder().slug(getResources().getString(R.string.drawer_vip)).withLogo(true).build());
+    }
+
+    @Click(R.id.contact_button)
+    protected void contactClicked() {
+        Intent i = new Intent(Intent.ACTION_SEND);
+        i.setType("message/rfc822");
+        i.putExtra(Intent.EXTRA_EMAIL, new String[]{"vipjanta@gmail.com"});
+        i.putExtra(Intent.EXTRA_SUBJECT, "subject of email");
+        i.putExtra(Intent.EXTRA_TEXT, "body of email");
+        try {
+            startActivity(Intent.createChooser(i, "Send mail..."));
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(MainActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Click(R.id.downloads_button)
+    protected void downloadsClicked() {
+        DownloadsActivity_.intent(getContext()).start();
     }
 
     public void switchFragment(Fragment fragment) {

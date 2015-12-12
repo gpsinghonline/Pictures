@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewCompat;
@@ -12,6 +13,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 
+import com.j256.ormlite.dao.Dao;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -21,15 +23,18 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
+import org.androidannotations.annotations.OrmLiteDao;
 import org.androidannotations.annotations.ViewById;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import ua.regin.pictures.R;
 import ua.regin.pictures.api.entity.Post;
+import ua.regin.pictures.db.DatabaseHelper;
 import ua.regin.pictures.ui.BaseActivity;
 import ua.regin.pictures.utils.ProgressDialogHelper;
 
@@ -50,6 +55,9 @@ public class DetailsActivity extends BaseActivity {
 
     @ViewById
     protected ImageView imageView;
+
+    @OrmLiteDao(helper = DatabaseHelper.class)
+    protected Dao<Post, Integer> postDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,6 +121,16 @@ public class DetailsActivity extends BaseActivity {
 
     @OptionsItem(R.id.action_download)
     protected void downloadClicked() {
+
+        String path = Environment.getExternalStorageDirectory() + "/Images/" + post.getTitle() + ".jpg";
+
+        post.setLocalPath(path);
+        try {
+            postDao.createOrUpdate(post);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         DownloadManager mgr = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
 
         Uri downloadUri = Uri.parse(post.getImageUrl());

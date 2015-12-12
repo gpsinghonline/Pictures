@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.details.DetailsActivity_" />
+        <activity android:name=".ui.downloads.DownloadsActivity_" />
         <activity
             android:name=".ui.search.SearchActivity_"
             android:windowSoftInputMode="stateVisible" />
