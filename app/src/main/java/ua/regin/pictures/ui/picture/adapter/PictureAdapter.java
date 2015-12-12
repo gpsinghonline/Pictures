@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
@@ -52,6 +53,7 @@ public class PictureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         if (viewHolder instanceof ViewHolder) {
             ViewHolder holder = (ViewHolder) viewHolder;
             Post post = postList.get(position);
+            holder.title.setText(post.getTitle());
             Picasso.with(context).load(post.getImageUrl()).fit().centerCrop().into(holder.imageView);
             holder.setOnClickListener(v -> onItemClickListener.onItemClick(holder.imageView, post));
         }
@@ -61,7 +63,7 @@ public class PictureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public int getItemCount() {
         int size = 0;
         if (postList != null) {
-            size = postList.size() + (withLogo ? +1 : +0);
+            size = postList.size();
         }
         return size;
     }
@@ -86,11 +88,13 @@ public class PictureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private ImageView imageView;
+        private TextView title;
         private View.OnClickListener onClickListener;
 
         public ViewHolder(View itemView) {
             super(itemView);
             imageView = (ImageView) itemView.findViewById(R.id.imageView);
+            title = (TextView) itemView.findViewById(R.id.title);
             itemView.setOnClickListener(this);
         }
 

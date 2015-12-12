@@ -70,4 +70,6 @@ dependencies {
 
     //OrmLite
     compile 'com.j256.ormlite:ormlite-android:4.48'
+
+    compile 'com.google.android.gms:play-services-ads:8.3.0'
 }

@@ -13,6 +13,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.j256.ormlite.dao.Dao;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -87,6 +89,10 @@ public class DetailsActivity extends BaseActivity {
 
             }
         });
+
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 
     @OptionsItem(R.id.action_share)
