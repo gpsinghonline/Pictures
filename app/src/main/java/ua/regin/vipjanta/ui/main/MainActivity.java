@@ -59,6 +59,9 @@ public class MainActivity extends BaseActivity {
                 case R.id.drawer_Birthday_Graphics:
                     fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Birthday_Graphics)).build();
                     break;
+                case R.id.drawer_Desi_graphics:
+                    fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Desi_graphics)).build();
+                    break;
                 case R.id.drawer_Best_of_Luck:
                     fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Best_of_Luck)).build();
                     break;
