@@ -153,7 +153,7 @@ public class MainActivity extends BaseActivity {
                     fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Whatsapp_special)).build();
                     break;
                 case R.id.drawer_Diwali_Scraps:
-                    fragment = PictureListFragment_.builder().title("Diwali Graphics").slug(resources.getString(R.string.drawer_Diwali_Scraps)).build();
+                    fragment = PictureListFragment_.builder().title("Diwali Graphics").slug("Diwali Scraps").build();
                     break;
                 case R.id.drawer_Get_Well_Soon:
                     fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Get_Well_Soon)).build();
@@ -171,10 +171,10 @@ public class MainActivity extends BaseActivity {
                     fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Hindi_Graphics)).build();
                     break;
                 case R.id.drawer_Kabaddi_Pictures:
-                    fragment = PictureListFragment_.builder().title("Kabaddi").slug(resources.getString(R.string.drawer_Kabaddi_Pictures)).build();
+                    fragment = PictureListFragment_.builder().title("Kabaddi").slug("Kabaddi Pictures").build();
                     break;
                 case R.id.drawer_Khanda_Sahib:
-                    fragment = PictureListFragment_.builder().title("Khanda").slug(resources.getString(R.string.drawer_Khanda_Sahib)).build();
+                    fragment = PictureListFragment_.builder().title("Khanda").slug("Khanda Sahib").build();
                     break;
                 case R.id.drawer_Paintings:
                     fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Paintings)).build();
