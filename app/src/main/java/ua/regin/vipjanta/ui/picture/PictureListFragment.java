@@ -34,6 +34,9 @@ public class PictureListFragment extends BaseFragment implements PictureAdapter.
     protected String slug;
 
     @FragmentArg
+    protected String title;
+
+    @FragmentArg
     protected boolean withLogo;
 
     @Bean(PostManager.class)
@@ -51,7 +54,7 @@ public class PictureListFragment extends BaseFragment implements PictureAdapter.
     @AfterViews
     protected void afterViews() {
         MainActivity activity = (MainActivity) getActivity();
-        activity.setToolbar(toolbar, slug);
+        activity.setToolbar(toolbar, title != null ? title : slug);
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
         if (withLogo) {
             layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {

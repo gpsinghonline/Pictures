@@ -10,4 +10,10 @@
         <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:homeAsUpIndicator">@drawable/ic_menu_white_24dp</item>
     </style>
+
+    <style name="NavigationViewLineSeperator">
+        <item name="android:background">@drawable/navigation_divider</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+    </style>
 </resources>

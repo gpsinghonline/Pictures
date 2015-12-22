@@ -10,6 +10,8 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import org.androidannotations.annotations.AfterViews;
@@ -39,28 +41,29 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (savedInstanceState == null) {
-            switchFragment(PictureListFragment_.builder().slug(getResources().getString(R.string.drawer_vip)).withLogo(true).build());
+            switchFragment(PictureListFragment_.builder().slug("Vip").title(getResources().getString(R.string.app_name)).withLogo(true).build());
         }
     }
 
     @AfterViews
     protected void afterViews() {
         navigationView.setNavigationItemSelectedListener(menuItem -> {
+            uncheckAllMenus();
             menuItem.setChecked(true);
             Resources resources = getResources();
             Fragment fragment;
             switch (menuItem.getItemId()) {
                 case R.id.drawer_vip:
-                    fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_vip)).withLogo(true).build();
+                    fragment = PictureListFragment_.builder().slug("Vip").title(getResources().getString(R.string.app_name)).withLogo(true).build();
                     break;
-                case R.id.drawer_amazing:
-                    fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_amazing)).build();
+                case R.id.drawer_amazing_graphics:
+                    fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_amazing_graphics)).build();
                     break;
                 case R.id.drawer_Birthday_Graphics:
                     fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Birthday_Graphics)).build();
                     break;
                 case R.id.drawer_Desi_graphics:
-                    fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Desi_graphics)).build();
+                    fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Desi_pictures)).build();
                     break;
                 case R.id.drawer_Best_of_Luck:
                     fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Best_of_Luck)).build();
@@ -116,8 +119,8 @@ public class MainActivity extends BaseActivity {
                 case R.id.drawer_Punjabi_graphics:
                     fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Punjabi_graphics)).build();
                     break;
-                case R.id.drawer_Punjabi_couple:
-                    fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Punjabi_couple)).build();
+                case R.id.drawer_Punjabi_couples:
+                    fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Punjabi_couples)).build();
                     break;
                 case R.id.drawer_Sad_Graphics:
                     fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Sad_Graphics)).build();
@@ -126,7 +129,7 @@ public class MainActivity extends BaseActivity {
                     fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Singh_soorme)).build();
                     break;
                 case R.id.drawer_Sat_sri_akal:
-                    fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Sat_sri_akal)).build();
+                    fragment = PictureListFragment_.builder().title("Sat Shri Akal").slug("Sat sri akal").build();
                     break;
                 case R.id.drawer_Sikh_Guru:
                     fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Sikh_Guru)).build();
@@ -146,8 +149,44 @@ public class MainActivity extends BaseActivity {
                 case R.id.drawer_Valentines_Day:
                     fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Valentines_Day)).build();
                     break;
-                case R.id.drawer_Whatsapp_sepecial:
-                    fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Whatsapp_sepecial)).build();
+                case R.id.drawer_Whatsapp_special:
+                    fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Whatsapp_special)).build();
+                    break;
+                case R.id.drawer_Diwali_Scraps:
+                    fragment = PictureListFragment_.builder().title("Diwali Graphics").slug(resources.getString(R.string.drawer_Diwali_Scraps)).build();
+                    break;
+                case R.id.drawer_Get_Well_Soon:
+                    fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Get_Well_Soon)).build();
+                    break;
+                case R.id.drawer_Gurudwara_Sahib:
+                    fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Gurudwara_Sahib)).build();
+                    break;
+                case R.id.drawer_Happy_New_Year:
+                    fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Happy_New_Year)).build();
+                    break;
+                case R.id.drawer_Ik_Onkar:
+                    fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Ik_Onkar)).build();
+                    break;
+                case R.id.drawer_Hindi_Graphics:
+                    fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Hindi_Graphics)).build();
+                    break;
+                case R.id.drawer_Kabaddi_Pictures:
+                    fragment = PictureListFragment_.builder().title("Kabaddi").slug(resources.getString(R.string.drawer_Kabaddi_Pictures)).build();
+                    break;
+                case R.id.drawer_Khanda_Sahib:
+                    fragment = PictureListFragment_.builder().title("Khanda").slug(resources.getString(R.string.drawer_Khanda_Sahib)).build();
+                    break;
+                case R.id.drawer_Paintings:
+                    fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Paintings)).build();
+                    break;
+                case R.id.drawer_Punjabi_Celebrities:
+                    fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Punjabi_Celebrities)).build();
+                    break;
+                case R.id.drawer_Satnam_Waheguru:
+                    fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Satnam_Waheguru)).build();
+                    break;
+                case R.id.drawer_Sachian_Gallan:
+                    fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Sachian_Gallan)).build();
                     break;
                 default:
                     throw new RuntimeException("Unknown fragment type");
@@ -157,6 +196,14 @@ public class MainActivity extends BaseActivity {
             drawerLayout.closeDrawers();
             return true;
         });
+    }
+
+    private void uncheckAllMenus() {
+        Menu menu = navigationView.getMenu();
+        for (int i = 0; i < menu.size(); i++) {
+            MenuItem menuItem = menu.getItem(i);
+            menuItem.setChecked(false);
+        }
     }
 
     @Click(R.id.home_button)

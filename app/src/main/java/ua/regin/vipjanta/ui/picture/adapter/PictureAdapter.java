@@ -54,7 +54,7 @@ public class PictureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             ViewHolder holder = (ViewHolder) viewHolder;
             Post post = postList.get(position);
             holder.title.setText(post.getTitle());
-            Picasso.with(context).load(post.getImageUrl()).fit().centerCrop().into(holder.imageView);
+            Picasso.with(context).load(post.getImageUrl()).placeholder(R.drawable.spinner_animation).fit().centerCrop().into(holder.imageView);
             holder.setOnClickListener(v -> onItemClickListener.onItemClick(holder.imageView, post));
         }
     }
