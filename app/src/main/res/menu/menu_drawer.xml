@@ -49,14 +49,6 @@
     </group>
 
     <group
-        android:id="@+id/menu_Diwali_Scraps"
-        android:checkableBehavior="single">
-        <item
-            android:id="@+id/drawer_Diwali_Scraps"
-            android:title="@string/drawer_Diwali_Scraps" />
-    </group>
-
-    <group
         android:id="@+id/menu_Facebook_graphics"
         android:checkableBehavior="single">
         <item

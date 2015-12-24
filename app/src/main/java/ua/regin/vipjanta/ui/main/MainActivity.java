@@ -152,9 +152,6 @@ public class MainActivity extends BaseActivity {
                 case R.id.drawer_Whatsapp_special:
                     fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Whatsapp_special)).build();
                     break;
-                case R.id.drawer_Diwali_Scraps:
-                    fragment = PictureListFragment_.builder().title("Diwali Graphics").slug("Diwali Scraps").build();
-                    break;
                 case R.id.drawer_Get_Well_Soon:
                     fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Get_Well_Soon)).build();
                     break;
