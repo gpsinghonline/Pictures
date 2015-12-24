@@ -49,6 +49,14 @@
     </group>
 
     <group
+        android:id="@+id/menu_Diwali_Scraps"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_Diwali_Scraps"
+            android:title="@string/drawer_Diwali_Scraps" />
+    </group>
+
+    <group
         android:id="@+id/menu_Facebook_graphics"
         android:checkableBehavior="single">
         <item
@@ -81,6 +89,13 @@
             android:title="@string/drawer_Friendship_Day" />
     </group>
 
+    <group
+        android:id="@+id/menu_Get_Well_Soon"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_Get_Well_Soon"
+            android:title="@string/drawer_Get_Well_Soon" />
+    </group>
 
     <group
         android:id="@+id/menu_Golden_Temple"
@@ -107,6 +122,22 @@
     </group>
 
     <group
+        android:id="@+id/menu_Gurudwara_Sahib"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_Gurudwara_Sahib"
+            android:title="@string/drawer_Gurudwara_Sahib" />
+    </group>
+
+    <group
+        android:id="@+id/menu_Happy_New_Year"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_Happy_New_Year"
+            android:title="@string/drawer_Happy_New_Year" />
+    </group>
+
+    <group
         android:id="@+id/menu_Hello"
         android:checkableBehavior="single">
         <item
@@ -123,11 +154,35 @@
     </group>
 
     <group
+        android:id="@+id/menu_Hindi_Graphics"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_Hindi_Graphics"
+            android:title="@string/drawer_Hindi_Graphics" />
+    </group>
+
+    <group
         android:id="@+id/menu_Hinduism"
         android:checkableBehavior="single">
         <item
             android:id="@+id/drawer_Hinduism"
             android:title="@string/drawer_Hinduism" />
+    </group>
+
+    <group
+        android:id="@+id/menu_Kabaddi_Pictures"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_Kabaddi_Pictures"
+            android:title="@string/drawer_Kabaddi_Pictures" />
+    </group>
+
+    <group
+        android:id="@+id/menu_Khanda_Sahib"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_Khanda_Sahib"
+            android:title="@string/drawer_Khanda_Sahib" />
     </group>
 
     <group
@@ -164,6 +219,22 @@
     </group>
 
     <group
+        android:id="@+id/menu_Paintings"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_Paintings"
+            android:title="@string/drawer_Paintings" />
+    </group>
+
+    <group
+        android:id="@+id/menu_Punjabi_Celebrities"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_Punjabi_Celebrities"
+            android:title="@string/drawer_Punjabi_Celebrities" />
+    </group>
+
+    <group
         android:id="@+id/menu_Punjabi_Culture"
         android:checkableBehavior="single">
         <item
@@ -188,6 +259,13 @@
             android:title="@string/drawer_Punjabi_couples" />
     </group>
 
+    <group
+        android:id="@+id/menu_Ik_Onkar"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_Ik_Onkar"
+            android:title="@string/drawer_Ik_Onkar" />
+    </group>
 
     <group
         android:id="@+id/menu_Sad_Graphics"
@@ -195,6 +273,22 @@
         <item
             android:id="@+id/drawer_Sad_Graphics"
             android:title="@string/drawer_Sad_Graphics" />
+    </group>
+
+    <group
+        android:id="@+id/menu_Satnam_Waheguru"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_Satnam_Waheguru"
+            android:title="@string/drawer_Satnam_Waheguru" />
+    </group>
+
+    <group
+        android:id="@+id/menu_Sachian_Gallan"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_Sachian_Gallan"
+            android:title="@string/drawer_Sachian_Gallan" />
     </group>
 
     <group
@@ -227,6 +321,14 @@
         <item
             android:id="@+id/drawer_Sikhism"
             android:title="@string/drawer_Sikhism" />
+    </group>
+
+    <group
+        android:id="@+id/menu_Shayari"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_Shayari"
+            android:title="@string/drawer_Shayari" />
     </group>
 
 
@@ -269,102 +371,5 @@
             android:id="@+id/drawer_Whatsapp_special"
             android:title="@string/drawer_Whatsapp_special" />
     </group>
-
-    <group
-        android:id="@+id/menu_Diwali_Scraps"
-        android:checkableBehavior="single">
-        <item
-            android:id="@+id/drawer_Diwali_Scraps"
-            android:title="@string/drawer_Diwali_Scraps" />
-    </group>
-
-    <group
-        android:id="@+id/menu_Get_Well_Soon"
-        android:checkableBehavior="single">
-        <item
-            android:id="@+id/drawer_Get_Well_Soon"
-            android:title="@string/drawer_Get_Well_Soon" />
-    </group>
-
-    <group
-        android:id="@+id/menu_Gurudwara_Sahib"
-        android:checkableBehavior="single">
-        <item
-            android:id="@+id/drawer_Gurudwara_Sahib"
-            android:title="@string/drawer_Gurudwara_Sahib" />
-    </group>
-
-    <group
-        android:id="@+id/menu_Happy_New_Year"
-        android:checkableBehavior="single">
-        <item
-            android:id="@+id/drawer_Happy_New_Year"
-            android:title="@string/drawer_Happy_New_Year" />
-    </group>
-
-    <group
-        android:id="@+id/menu_Ik_Onkar"
-        android:checkableBehavior="single">
-        <item
-            android:id="@+id/drawer_Ik_Onkar"
-            android:title="@string/drawer_Ik_Onkar" />
-    </group>
-
-    <group
-        android:id="@+id/menu_Hindi_Graphics"
-        android:checkableBehavior="single">
-        <item
-            android:id="@+id/drawer_Hindi_Graphics"
-            android:title="@string/drawer_Hindi_Graphics" />
-    </group>
-
-    <group
-        android:id="@+id/menu_Kabaddi_Pictures"
-        android:checkableBehavior="single">
-        <item
-            android:id="@+id/drawer_Kabaddi_Pictures"
-            android:title="@string/drawer_Kabaddi_Pictures" />
-    </group>
-
-    <group
-        android:id="@+id/menu_Khanda_Sahib"
-        android:checkableBehavior="single">
-        <item
-            android:id="@+id/drawer_Khanda_Sahib"
-            android:title="@string/drawer_Khanda_Sahib" />
-    </group>
-
-    <group
-        android:id="@+id/menu_Paintings"
-        android:checkableBehavior="single">
-        <item
-            android:id="@+id/drawer_Paintings"
-            android:title="@string/drawer_Paintings" />
-    </group>
-
-    <group
-        android:id="@+id/menu_Punjabi_Celebrities"
-        android:checkableBehavior="single">
-        <item
-            android:id="@+id/drawer_Punjabi_Celebrities"
-            android:title="@string/drawer_Punjabi_Celebrities" />
-    </group>
-
-    <group
-        android:id="@+id/menu_Satnam_Waheguru"
-        android:checkableBehavior="single">
-        <item
-            android:id="@+id/drawer_Satnam_Waheguru"
-            android:title="@string/drawer_Satnam_Waheguru" />
-    </group>
-
-    <group
-        android:id="@+id/menu_Sachian_Gallan"
-        android:checkableBehavior="single">
-        <item
-            android:id="@+id/drawer_Sachian_Gallan"
-            android:title="@string/drawer_Sachian_Gallan" />
-    </group>
-
 
 </menu>

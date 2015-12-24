@@ -188,6 +188,9 @@ public class MainActivity extends BaseActivity {
                 case R.id.drawer_Sachian_Gallan:
                     fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Sachian_Gallan)).build();
                     break;
+                case R.id.drawer_Shayari:
+                    fragment = PictureListFragment_.builder().slug(resources.getString(R.string.drawer_Shayari)).build();
+                    break;
                 default:
                     throw new RuntimeException("Unknown fragment type");
             }
