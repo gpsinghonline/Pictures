@@ -208,7 +208,7 @@ public class MainActivity extends BaseActivity {
 
     @Click(R.id.home_button)
     protected void homeClicked() {
-        switchFragment(PictureListFragment_.builder().slug(getResources().getString(R.string.drawer_vip)).withLogo(true).build());
+        switchFragment(PictureListFragment_.builder().slug("Vip").title(getResources().getString(R.string.app_name)).withLogo(true).build());
     }
 
     @Click(R.id.contact_button)

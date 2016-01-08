@@ -12,12 +12,12 @@
         android:layout_height="match_parent" />
 
     <TextView
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="#F0FFFFFF"
         android:gravity="center_horizontal"
         android:text="TEST TEST TEST"
-        android:textColor="@android:color/black"
-        android:id="@+id/title" />
+        android:textColor="@android:color/black" />
 </ua.regin.vipjanta.ui.picture.components.SquareLayout>
