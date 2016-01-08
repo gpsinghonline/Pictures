@@ -27,7 +27,7 @@
             android:layout_gravity="center_horizontal"
             android:gravity="center"
             android:padding="8dp"
-            android:text="Find Downloaded Files In Pictures Folder"
+            android:text="Find Downloaded Files In Images Folder"
             android:textColor="@android:color/black"
             android:textStyle="bold" />
 
